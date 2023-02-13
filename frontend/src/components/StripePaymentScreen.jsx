@@ -17,7 +17,7 @@ const StripePaymentScreen = () => {
   // Create a client Secret for the payment intent
   useEffect(() => {
     axios
-      .post("http://localhost:3000/create-payment-intent", {
+      .post("http://localhost:3000/create-split-payment-intent", {
         amount: calculateTotal() * 100,
       })
       .then((res) => {
