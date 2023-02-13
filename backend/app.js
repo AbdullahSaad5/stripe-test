@@ -49,8 +49,12 @@ app.post("/create-payment-intent", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       currency: "USD",
       amount: amount,
+      application_fee_amount: amount * 0.2,
       description: "Fake Apple Store",
       automatic_payment_methods: { enabled: true },
+      transfer_data: {
+        destination: "acct_1MZCz4DHqXbRARLk",
+      },
     });
 
     res.json({ clientSecret: paymentIntent.client_secret });
